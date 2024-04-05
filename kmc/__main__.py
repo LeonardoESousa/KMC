@@ -286,12 +286,12 @@ def animate(num, system, ax, marker_option, do_rotate):
     mats = system.mats
     ax.clear()
     #get coolwarm colormap
-    cmap = plt.cm.get_cmap('coolwarm')
-    colors = system.s0 + system.static
+    #cmap = plt.cm.get_cmap('coolwarm')
+    #colors = system.s0 + system.static
     #normalize colors
-    colors = (colors - np.min(colors)) / (np.max(colors) - np.min(colors))
+    #colors = (colors - np.min(colors)) / (np.max(colors) - np.min(colors))
     #map colors to colormap
-    colors = cmap(colors)
+    #colors = cmap(colors)
     # ploting the sites according to mat index
     colors_dic = {0: "black", 1: "blue", 2: "red", 3: "green", 4: "yellow"}
     n_mats = np.unique(mats)
@@ -299,7 +299,7 @@ def animate(num, system, ax, marker_option, do_rotate):
         X_mat = X[mats == mat]
         Y_mat = Y[mats == mat]
         Z_mat = Z[mats == mat]
-        ax.scatter(X_mat, Y_mat, Z_mat, alpha=0.25, color=colors)#colors_dic.get(int(mat)))
+        ax.scatter(X_mat, Y_mat, Z_mat, alpha=0.25, color=colors_dic[mat])#colors)
     try:
         for s in Ss:
             xs = X[s.position]

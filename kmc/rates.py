@@ -217,7 +217,7 @@ class Marcus:
             num,
             site_energy,
             self.kbt,
-            self.decay,
+            self.decay[mat],
             r,
         )
         return taxa
