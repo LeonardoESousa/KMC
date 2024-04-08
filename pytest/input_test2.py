@@ -5,6 +5,7 @@ import sys
 ###BASIC PARAMETERS######################################################################
 identifier         = 'test2_'+(sys.argv[2]) #output identifier
 time_limit         = np.inf# in PS
+cutoff             = 16     # cutoff distance for rates (Å)
 animation_mode     = False
 save_animation     = False # if you want to save the animation
 animation_exten    = 'gif' # possible options ('gif' and 'mp4')
@@ -15,7 +16,7 @@ rounds             = 1000  # Number of rounds
 n_proc             = 10#5     # Number of cores to be used
 frozen_lattice     = True
 bimolec            = False # Turn on annihilation
-periodic           = False
+periodic           = True
 #########################################################################################
 
 ###MORPHOLOGY############################################################################
@@ -28,8 +29,8 @@ periodic           = False
 
 
 # Creating a new lattice at each new round
-num_sites         = 100*100        #number of sites of the lattice
-displacement      = [15, 15, 0]    #vector of the unit cell
+num_sites         = 8*8*8        #number of sites of the lattice
+displacement      = [15, 15, 15]    #vector of the unit cell
 disorder          = [0.0,0.0,0.0]   #std deviation from avg position
 composition       = [0.5,0.5]       #popuation probility Ex.: distribu_vect[0] is the prob of mat 0 appear in the lattice
 lattice_func      = morphology.Lattice(num_sites,displacement,disorder,composition)

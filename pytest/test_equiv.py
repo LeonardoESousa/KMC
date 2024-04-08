@@ -52,7 +52,7 @@ def cond(array, cutoff):
 log_name1 = "input_test1.py"
 config_test1 = [
     [100, 10],
-    [125, 4],
+    [250, 4],
     [1000, 1],
 ]  # 1000 rounds 10 ex, 10000 rounds 1 ex...
 simuls1 = run_job(config_test1, log_name1)
@@ -83,7 +83,7 @@ def test_fluor(jobs):
         print("values:", avgs)
         avgs = [abs((av - ref) / ref) for av in avgs]
         print("result :", avgs)
-        assert cond(avgs, 0.2) == True
+        assert cond(avgs, 0.1) == True
 
 
 @pytest.mark.parametrize("jobs", jobs)
@@ -100,7 +100,8 @@ def test_ld(jobs):
         std = np.std(avgs)
         print("ld: ", avgs)
         print("std:", std)
-        assert std <= 0.4
+        print("cv: ", std / np.mean(avgs))
+        assert std/np.mean(avgs) <= 0.1
 
 
 ####### Diffusion test #######
